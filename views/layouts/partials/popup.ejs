@@ -1,0 +1,17 @@
+<% if(page === "Merch" || page === "Contact") {%> 
+<div class="popup">
+    <div class="popup__div">
+        <% if(page ==="Merch") {%> 
+            <div>
+            <p class="popup__text">The store is currently out of stock, but please feel free to browse.</p>
+            </div>
+            <% } %> 
+            <% if(page === "Contact") {%> 
+            <p class="popup__text">This is a dummy page. Please go to my linkedin or portfolio pages for more info.</p>
+            <% } %> 
+            <div class="popup__btnDiv">
+                <button class="basebtn popup__btn" id="popupBtn">OK</button>
+            </div>
+    </div>
+</div>
+<% } %> 

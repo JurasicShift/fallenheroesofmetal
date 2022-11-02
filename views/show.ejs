@@ -1,0 +1,69 @@
+<% layout("layouts/boilerplate") -%>
+<section class="jumbo__section">
+  <div class="container">
+    <h3 class="text-center mb-5  base__title"><%= article.title  %></h3>
+  </div>
+  <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-9">
+          <div class="forum__btns">
+            <a href="/forum" class="basebtn basebtn__forum basebtn__forum--back">Back</a>
+            <% if(login && username === article.username) { %> 
+            <a href="/edit/<%= article.slug %>" class="basebtn basebtn__forum basebtn__forum--back">Edit</a>
+            <% } %> 
+          </div>
+            <table class="table table-responsive text-light">
+                <tbody>
+                    <tr class="forum__row">
+                        <td>
+                          <h3 class="forum__title"><%= article.title  %></h3>
+                          <p class="mb-0 forum__text">
+                            <%= article.article %> 
+                          </p>
+                          <div class="likes__div" id="likes" data-id="<%= article._id %>" data-type="article">
+                            <i class="far fa-thumbs-up"></i><span class="likes__span"><%= article.likes || 0 %> </span>
+                            <i class="far fa-thumbs-down"></i><span class="likes__span"><%= article.dislikes || 0 %> </span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="forum__author"><%= article.username || "Mr Blobby"%> </div>
+                          <div class="forum__date"><%= article.date || "This time" %> </div>
+                        </td>
+                      </tr>
+                      <tr class="spacer"></tr>
+                      <tr class="forum__row">
+                          <td>
+                          <form action="/comment/<%= article.slug %>" method="POST" id="forumComment" class="validated-form" novalidate>
+                            <div class="forum__comment">
+                              <label for="commentInput" class="forum__title--comment">Comment</label>
+                              <input type="text" class="form-control form-control-sm forum__input" name="comment" id="commentInput" form="forumComment" required>
+                            </div>
+                          </form>
+                        </td>
+                        <td>
+                          <div class="d-flex justify-content-center">
+                            <button type="submit" form="forumComment" class="basebtn basebtn__forum basebtn__forum--add">ADD</button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr class="spacer"></tr>
+                      <% for(let comment of article.comments) {%> 
+                        <%- include("layouts/partials/commentreply", {comment: comment, slug: article.slug})  %> 
+                      <% if(comment.replies) {
+                        for(let reply of comment.replies) {%> 
+                          <%- include("layouts/partials/commentreply", {comment: reply, slug: article.slug})  %> 
+                          <% if(reply.replies) {
+                        for(let reply2 of reply.replies) {%> 
+                          <%- include("layouts/partials/commentreply", {comment: reply2, slug: article.slug})  %> 
+                        <% } }%>
+                        <% } }%> 
+                        
+                        <tr class="spacer"></tr>
+                        <% } %> 
+                </tbody>
+            </table>
+            <div class="style-line"></div>
+            </div>
+            </div>
+            </div>
+            </section>

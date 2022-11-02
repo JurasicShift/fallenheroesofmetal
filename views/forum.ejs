@@ -1,0 +1,51 @@
+<% layout("layouts/boilerplate") -%>
+<section class="jumbo__section">
+  <div class="container">
+    <h3 class="text-center mb-5  base__title"><%= page %> 
+    </h3>
+  </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-9">
+        <div class="forum__btns">
+          <% if(current.includes("/forum")) {%> 
+            <a href="/myarticles" class="basebtn basebtn__forum">My Articles</a>
+            <% } else { %> 
+              <a href="/forum" class="basebtn basebtn__forum">Forum</a>
+              <% } %> 
+            <a href="/newarticle" class="basebtn basebtn__forum">New Article</a>
+        </div>
+        <table class="table table-responsive text-light">
+          <thead>
+            <tr class="forum__row forum__row--head">
+              <th scope="col" >Article</th>
+              <th scope="col">Likes</th>
+              <th scope="col">Posts</th>
+              <th scope="col">Author</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let i = 0; i < articles.length; i++) { %> 
+            <tr class="forum__row">
+              <td>
+                <h3 class="forum__title"><a href="/forum/<%= articles[i].slug %> "><%= articles[i].title  %> </a></h3>
+                <p class="mb-0 forum__text">
+                  <%= articles[i].article %> 
+                </p>
+              </td>
+              <td class="text-center"><%= articles[i].likes || 0 %> </td>
+              <td class="text-center"><%= articles[i].comments.length || 0 %> </td>
+              <td>
+                <div class="forum__author"><%= articles[i].username || "Steptoe" %> </div>
+                <div class="forum__date"><%= articles[i].date || "Just now" %>  </div>
+              </td>
+            </tr>
+            <tr class="spacer"></tr>
+            <% } %> 
+          </tbody>
+        </table>
+        <div class="style-line"></div>
+      </div>
+    </div>
+  </div>
+</section>

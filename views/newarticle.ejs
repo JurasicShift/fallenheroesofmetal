@@ -1,0 +1,46 @@
+<% layout("layouts/boilerplate") -%>
+<section class="jumbo__section">
+  <div class="container">
+    <h3 class="text-center mb-5  base__title"><%= page %></h3>
+  </div>
+  <div class="container">
+    <% if(page === "Edit") {%>
+      <form action="/edit/<%= article.slug %>?_method=PUT" method="POST" id="editArticle" class="article__form validated-form" novalidate>
+ <% } else { %> 
+      <form action="/newarticle" method="POST" id="newArticle" class="article__form validated-form" novalidate>
+        <% } %> 
+        <div class="form-row justify-content-center align-items-center">
+          <div class="form-group col-10 col-sm-10 col-md-8">
+            <label for="articleTitle" class="form__label">Title</label>
+            <input type="text" name="title" id="articleTitle" class="form-control
+            form__input form__input--article" <% if(page === "Edit") {%> value=" <%= article.title%>"<% } %> required>
+          </div>
+        </div>
+        <div class="form-row justify-content-center align-items-center">
+         <div class="form-group col-10 col-sm-10 col-md-8">
+          <label for="articleText" class="form__label">Article</label>
+          <% if(page === "Edit") {%>
+          <textarea name="article" id="articleText" class="form-control form__input form__input--textarea" required> <%= article.article %></textarea>
+          <% } else { %>
+            <textarea name="article" id="articleText" class="form-control form__input form__input--textarea" required> 
+              </textarea>
+            <% } %> 
+        </div>
+         </div>
+      </form>
+      <div class="row justify-content-center align-items-center">
+        <div class="col-10 col-sm-10 col-md-8">
+          <div class="article__btns <% if(page === "Edit") {%> article__btns2 <% } %>  ">
+            <a href="/forum<% if(page === "Edit") {%>/<%= article.slug %><% } %>" class="basebtn basebtn__forum basebtn__forum--back">Back</a>
+            <button class="basebtn basebtn__forum basebtn__forum--back" type="submit" form="<% if(page === "Edit") {%>editArticle<% } else { %>newArticle<% } %>">POST</button>
+            <% if(page === "Edit") {%>
+              <form action="/deleteArticle/<%= article.slug %>?_method=DELETE" method="POST" id="deleteArticle">
+                <button class="basebtn basebtn__forum basebtn__forum--back" type="submit" form="deleteArticle">Delete</button>
+              </form>
+            <% } %> 
+          </div>
+        </div>
+      </div>
+    <div class="style-line"></div>
+    </div>
+    </section>

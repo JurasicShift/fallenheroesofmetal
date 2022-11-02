@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Play&family=Teko:wght@500&family=Titillium+Web&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="/styles/heroes.css" />
+    <title>F.H.M. <%= page %></title>
+  </head>
+  <body <% if (/Discography/.test(page) || /Contact/.test(page)) { %> class="bg2" <% } %>  >
+    <header>
+      <% if(page !== "") {%>
+      <nav class="fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-dark text-light">
+          <div class="nav__logo">
+            <a class="navbar-brand pb-0" href="/home"><img src="/img/pent1.png" /></a><span class="nav__online <% if(login) {%> nav__online--active <% } %> "></span>
+          </div>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            id="navBtn"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse justify-content-between"
+            id="navbarNavDropdown"
+          >
+            <ul class="navbar-nav level1">
+              <li class="nav-item <% if(page === "Home") {%> active <% } %> ">
+                <a class="nav-link" href="/home"
+                  >Home<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item <% if(page === "Forum") {%> active <% } %>">
+                <a class="nav-link" href="/forum">Forum</a>
+              </li>
+              <li class="nav-item <% if(page === "Merch") {%> active <% } %><% if(page === "Cart") {%> active <% } %>">
+                <a class="nav-link" href="/merch">Merch</a>
+              </li>
+              <li class="nav-item dropdown submenu">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdownMenuLink"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  >Artists</a
+                >
+                <div
+                  class="dropdown-menu border-0 level2 bg-transparent"
+                  aria-labelledby="navbarDropdownMenuLink"
+                >
+                  <a class="dropdown-item px-0 px-lg-4" href="/cliff"
+                    >Cliff Burton</a
+                  >
+                  <a class="dropdown-item px-0 px-lg-4" href="/dime"
+                    >Dimebag Darrell</a
+                  >
+                  <a class="dropdown-item px-0 px-lg-4" href="/dio"
+                    >Ronnie James Dio</a
+                  >
+                  <a class="dropdown-item px-0 px-lg-4" href="/jeff"
+                    >Jeff Hanneman</a
+                  >
+                  <a class="dropdown-item px-0 px-lg-4" href="/lemmy"
+                    >Lemmy</a
+                  >
+                  <a class="dropdown-item px-0 px-lg-4" href="/phil"
+                    >Phil Lynott</a
+                  >
+                  <a class="dropdown-item px-0 px-lg-4" href="/vinnie"
+                    >Vinnie Paul</a
+                  >
+                  <a class="dropdown-item px-0 px-lg-4" href="/randy"
+                    >Randy Rhodes</a
+                  >
+                  <a class="dropdown-item px-0 px-lg-4" href="/chuck"
+                    >Chuck Schuldiner</a
+                  >
+                  <a class="dropdown-item px-0 px-lg-4" href="/bon"
+                    >Bon Scott</a
+                  >
+                </div>
+              </li>
+            </ul>
+            <div id="logoList">
+                <ul class="navbar-nav d-flex flex-row justify-content-around font" >
+                    <li class="nav-item pl-lg-2">
+                      <a class="nav-link" href="#"
+                        ><i class="fab fa-facebook-square"></i
+                      ></a>
+                    </li>
+                    <li class="nav-item pl-lg-2">
+                      <a class="nav-link" href="#"
+                        ><i class="fab fa-youtube-square"></i
+                      ></a>
+                    </li>
+                    <li class="nav-item pl-lg-2">
+                      <a class="nav-link" href="#"
+                        ><i class="fab fa-twitter-square"></i
+                      ></a>
+                    </li>
+                    <% if(login) {%>
+                    <li class="nav-item pl-lg-2">
+                      <a class="nav-link" href="/logout"
+                        ><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+                    </li>
+                    <% } %> 
+                  </ul>
+            </div>
+          </div>
+        </nav>
+        <div class="subLogo__div">
+          <img class="subLogo__img" id="subLogo" src="/img/logo2.1.png" />
+        </div>
+      </nav>
+      <%- include("partials/flash") %> 
+      <% } %>
+    </header>
+    <%- body -%>
+    <footer>
+      <% if(page !== "") {%>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12 col-md-6 col-xl-3">
+            <div class="card mb-lg-4 mt-4">
+              <img class="card-img-top" src="/img/marshall3.jpg" alt="login" />
+              <div class="card-body text-center">
+                <img src="/img/pent1.png" class="icon-size rotate" />
+                <h5 class="card-title py-1">Member Login</h5>
+                <form action="/signlog" id="formSignUp">
+                  <input
+                    type="submit"
+                    class="basebtn basebtn-footer"
+                    value="Hell Yeah!"
+                    form="formSignUp"
+                  />
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-xl-3">
+            <div class="card mb-lg-4 mt-4">
+              <img class="card-img-top" src="/img/marshall3.jpg" alt="login" />
+              <div class="card-body text-center">
+                <img src="/img/pent1.png" class="icon-size rotate" />
+                <h5 class="card-title py-1">Sign Up!</h5>
+                <form action="/signlog" id="formLogin">
+                  <input
+                    type="submit"
+                    class="basebtn basebtn-footer"
+                    value="Hell Yeah!"
+                    form="formLogin"
+                  />
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-xl-3">
+            <div class="card mb-lg-4 mt-4">
+              <img class="card-img-top" src="/img/marshall3.jpg" alt="login" />
+              <div class="card-body text-center">
+                <img src="/img/pent1.png" class="icon-size rotate" />
+                <h5 class="card-title py-1">Contact Us</h5>
+                <form action="/contact" id="formContact">
+                  <input
+                    type="submit"
+                    class="basebtn basebtn-footer"
+                    value="Hell Yeah!"
+                    form="formContact"
+                  />
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-xl-3">
+            <div class="card mb-4 mt-4">
+              <img class="card-img-top" src="/img/marshall3.jpg" alt="login" />
+              <div class="card-body text-center">
+                <img src="/img/pent1.png" class="icon-size rotate" />
+                <h5 class="card-title py-1">References</h5>
+                <form action="/references" id="formRef">
+                  <input
+                    type="submit"
+                    class="basebtn basebtn-footer"
+                    value="Hell Yeah!"
+                    form="formRef"
+                  />
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </footer> 
+    <%- include("partials/popup") %>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js"></script>
+<script src="https://kit.fontawesome.com/0d93e1d936.js" crossorigin="anonymous"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/validation.js"></script>
+  </body>
+</html>

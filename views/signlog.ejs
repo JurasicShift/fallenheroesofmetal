@@ -1,0 +1,64 @@
+<% layout("layouts/boilerplate") -%>
+<section class="jumbo__section">
+    <form class="container signup validated-form" action="/signin" method="POST" id="signin" novalidate>
+        <h2 class="base__title text-center mb-5"> Member Login</h2>
+        <div class="form-row justify-content-center align-items-center">
+            <div class="form-group col-md-8 col-lg-6">
+                <label class="form__label" for="signinUsername">Username</label>
+                <input type="text" class="form-control form__input" name="username" id="signinUsername" required>
+            </div>
+        </div>
+        <div class="form-row justify-content-center align-items-center">
+            <div class="form-group col-md-8 col-lg-6">
+                <label class="form__label" for="signinPassword">Password (min 8 characters)</label>
+                <input type="password" class="form-control form__input" name="password" id="signinPassword" required>
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn basebtn btn-lg mt-4 mt-3" form="signin">Login!</button>
+        </div>
+    </form>
+    <div class="style-line"></div>
+    <form class="container signup validated-form" action="/signup" method="POST" id="signup" novalidate>
+        <h2 class="base__title text-center mb-4">Sign Up!</h2>
+        <div class="form-row justify-content-center align-items-center">
+            <div class="form-group col-md-8 col-lg-6">
+                <label class="form__label" for="signupEmail">Email</label>
+                <input type="email" class="form-control form__input" name="email" id="signupEmail" required>
+            </div>
+        </div>
+        <div class="form-row justify-content-center align-items-center">
+            <div class="form-group col-md-8 col-lg-6">
+                <label class="form__label" for="signupUsername">Username</label>
+                <input type="text" class="form-control form__input" name="username" id="signupUsername" placeholder=" Choose Username" required>
+            </div>
+        </div>
+        <div class="form-row justify-content-center align-items-center">
+            <div class="form-group col-md-8 col-lg-6">
+                <label class="form__label" for="signupPw">Password (min 8 characters)</label>
+                <input type="password" class="form-control form__input" name="password" id="signupPw" required>
+            </div>
+        </div>
+        <div class="form-row justify-content-center align-items-center">
+            <div class="form-group col-md-8 col-lg-6">
+                <label class="form__label" for="signupCPw">Confirm Password</label>
+                <input type="password" class="form-control form__input" name="confirmPassword" id="signupCPw" required>
+            </div>
+        </div>
+        <div class="form-row justify-content-center align-items-center">
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input mt-3" type="checkbox" name="signupCheck" id="signupCheck" required>
+                    <label class="form-check-label mt-3 form__label" for="signupCheck">
+                        I have read and agree to the terms and conditions.
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn basebtn btn-lg" form="signup">Sign Up!</button>
+        </div>
+    </form>
+    </section>
+    <div class="style-line"></div>
+

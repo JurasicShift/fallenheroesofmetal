@@ -1,0 +1,14 @@
+<% if(success && success.length) {%> 
+<div class="flash__div">
+    <div class="flash__subDiv" id="flashDiv">
+        <p class="flash__text"> <%= success %> </p>
+    </div>
+  </div>
+  <% } %> 
+  <% if(error && error.length) {%> 
+    <div class="flash__div">
+        <div class="flash__subDiv" id="flashDiv">
+            <p class="flash__text"> <%= error %> </p>
+        </div>
+      </div>
+      <% } %> 

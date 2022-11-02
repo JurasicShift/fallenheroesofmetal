@@ -1,0 +1,15 @@
+<% layout("layouts/boilerplate") -%>
+<div class="error__div">
+	<div class="error__alert">
+		<h4 class="error__heading">ERROR: <%= err.message %></h4>
+		<h3 class="error__heading">ERROR STATUS: <%= err.status %></h3>
+		<% if (process.env.NODE_ENV !== "production") { %>
+		<p class="error__text"><%= err.stack %></p>
+		<% } %>
+		<div class="error__btnDiv">
+			<a href="javascript:history.go(-1)"
+				><i class="fa-regular fa-circle-xmark" id="errorCross"></i
+			></a>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,41 @@
+<tr class="forum__row <% if(comment.depth === 1) {%> forum__row--1<% } %><% if(comment.depth === 2) {%> forum__row--2 <% } %> ">
+    <td class="forum__td">
+        <p class="mb-0 forum__text <% if(comment.depth === 1) {%> pl-4<% } %><% if(comment.depth === 2) {%> pl-5 <% } %>">
+          <%= comment.comment %> 
+        </p>
+        <div class="likes__div likes__div--comment" id="likes" data-id="<%= comment._id %>" data-type="comment">
+          <i class="far fa-thumbs-up"></i><span class="likes__span"><%= comment.likes%> </span>
+          <i class="far fa-thumbs-down"></i><span class="likes__span"><%= comment.dislikes %> </span>
+          <% if(comment.depth < 2) {%> 
+          <span class="reply" data-comment="<%= comment._id%>">Reply</span>
+          <% } %> 
+        </div>
+    </td>
+    <td class="td__flex">
+      <div>
+        <div class="forum__author forum__author--comment"><%= comment.username %> </div>
+        <div class="forum__date"><%= comment.date %></div>
+      </div>
+      <div class="align-self-center">
+        <% if(comment.depth >= 0 && username === comment.username) {%> 
+          <span class="forum__trash"><a href="/deleteReply/<%= slug %>/<%=comment._id%>?_method=DELETE"><i class="fa-regular fa-circle-xmark"></i></a></span>
+          <% } %> 
+      </div>
+    </td>
+  </tr>
+  <tr class="spacer__hidden"></tr>
+  <tr class="forum__row forum__row--reply" id="replyRow<%= comment._id%>">
+  <td>
+    <form action="/reply/<%= article.slug %>/<%=comment._id%>" method="POST" id="reply<%=comment._id%>" class="validated-form" novalidate>
+      <div class="forum__comment">
+        <label for="replyInput<%=comment._id%>" class="forum__title--comment">Reply</label>
+        <input type="text" class="form-control form-control-sm forum__input" name="comment" id="replyInput<%=comment._id%>" form="reply<%=comment._id%>" required>
+      </div>
+    </form>
+  </td>
+  <td>
+    <div class="d-flex justify-content-center">
+    <button type="submit" form="reply<%=comment._id%>" class="basebtn basebtn__forum basebtn__forum--add">ADD</button>
+      </div>
+  </td>
+</tr>
