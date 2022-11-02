@@ -1859,6 +1859,16 @@ FLASH MESSAGES
 MEDIA QUERIES
 ====================================*/
 
+@media only screen and (min-width: 420px) {
+	.table th {
+		padding: 12px;
+	}
+
+	.table td {
+		padding: 12px;
+	}
+}
+
 @media only screen and (min-width: 536px) {
 	.logo__img {
 		height: 450px;
@@ -1914,14 +1924,6 @@ MEDIA QUERIES
 	.table__span {
 		position: relative;
 		left: 60px;
-	}
-
-	.table th {
-		padding: 12px;
-	}
-
-	.table td {
-		padding: 12px;
 	}
 
 	.popup__text {
