@@ -71,7 +71,7 @@ app.use(
 );
 
 app.use((req, res, next) => {
-	res.header('Cross-Origin-Opener-Policy', 'same-origin');
+	res.header('Cross-Origin-Opener-Policy', 'unsafe-none');
 	next();
 });
 
