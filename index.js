@@ -71,6 +71,11 @@ app.use(
 );
 
 app.use((req, res, next) => {
+	res.header('Cross-Origin-Opener-Policy', 'same-origin');
+	next();
+});
+
+app.use((req, res, next) => {
 	const date = new Date();
 	res.locals.login = req.session.login || false;
 	res.locals.date = date.toLocaleString('en-GB');
