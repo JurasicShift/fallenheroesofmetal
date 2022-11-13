@@ -187,6 +187,7 @@ body {
 	background-attachment: fixed;
 	-ms-overflow-style: none;
 	scrollbar-width: none;
+	overflow-x: hidden;
 	color: white;
 	text-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black;
 }
@@ -195,9 +196,9 @@ body {
 	background-image: url('../img/vinyl.jpg');
 }
 
-body::-webkit-scrollbar {
+/* body::-webkit-scrollbar {
 	display: none;
-}
+} */
 
 .style-line {
 	width: 100px;
@@ -378,6 +379,7 @@ LOGO SECTION
 
 @keyframes logoSlide1 {
 	0% {
+		display: block;
 		transform: translateX(-100vw);
 	}
 	100% {
@@ -391,6 +393,7 @@ LOGO SECTION
 	}
 	100% {
 		transform: translateX(100vw);
+		display: none;
 	}
 }
 
@@ -692,11 +695,17 @@ HERO PAGES
 	background-color: rgba(52, 58, 64, 0.6);
 }
 
-.quote__p,
-.quote__p--dio {
+.quote__p {
 	font-size: 18px;
 	padding-top: 24px;
 	padding-bottom: 20px;
+	letter-spacing: 0.5px;
+}
+
+.quote__p--dio {
+	font-size: 16px;
+	padding-top: 18px;
+	padding-bottom: 18px;
 	letter-spacing: 0.5px;
 }
 
@@ -807,6 +816,10 @@ td {
 	line-height: 18px;
 	padding: 5px;
 	text-align: center;
+}
+
+.recommend__text--dio {
+	padding: 10px 5px 0px 5px;
 }
 
 .recommend__text--jeff {
@@ -1541,6 +1554,7 @@ a.basebtn__forum {
 .forum__row td,
 .forum__row th {
 	width: 100%;
+	padding: 12px 3px 12px 3px;
 }
 
 .table thead th {
@@ -1548,14 +1562,9 @@ a.basebtn__forum {
 	letter-spacing: 1px;
 }
 
-.table th {
-	border-top: none;
-	padding: 12px 3px 12px 3px;
-}
-
+.table th,
 .table td {
-	border: none;
-	padding: 12px 3px 12px 3px;
+	border-top: none;
 }
 
 td.forum__td {
@@ -1860,11 +1869,8 @@ MEDIA QUERIES
 ====================================*/
 
 @media only screen and (min-width: 420px) {
-	.table th {
-		padding: 12px;
-	}
-
-	.table td {
+	.forum__row td,
+	.forum__row th {
 		padding: 12px;
 	}
 }
