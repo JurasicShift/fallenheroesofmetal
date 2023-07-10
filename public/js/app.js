@@ -5,6 +5,17 @@ const myAudio = document.getElementById('myAudio');
 const navBtn = document.getElementById('navBtn');
 const popupBtn = document.getElementById('popupBtn');
 const flash = document.getElementById('flashDiv');
+const spinner = document.getElementById('spinner');
+
+// =======================================
+// SPINNER 
+// =======================================
+
+window.onload = function() {
+	spinner.style.display = "none";
+}
+
+  //==========================================
 
 function initialise() {
 	if (logoImg) {
@@ -57,6 +68,9 @@ function initialise() {
 		flashAnimate();
 	}
 }
+
+
+
 
 // ===========================================
 // LANDING PAGE ANIMATION
